@@ -1,0 +1,57 @@
+name: teste_tecnico_shoulder
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.4 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.6.5
+  lottie: ^2.3.0
+  cupertino_icons: ^1.0.2
+  json_annotation: ^4.8.0
+  responsive_sizer: ^3.1.1
+  shared_preferences: ^2.0.20
+  mask_text_input_formatter: ^2.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
+  json_serializable: ^6.6.1
+  flutter_native_splash: ^2.2.19
+  flutter_launcher_icons: ^0.12.0
+
+flutter_native_splash:
+  background_image: assets/png/blue_background.png
+  background_image_dark: assets/png/blue_background.png
+  image: assets/png/app_icon.png
+  image_dark: assets/png/app_icon.png
+
+  android_12:
+    background_image: assets/png/blue_background.png
+    background_image_dark: assets/png/blue_background.png
+    image: assets/png/app_icon.png
+    image_dark: assets/png/app_icon.png
+
+  web: false
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/png/app_icon.png"
+  adaptive_icon_background: "#1E4767"
+  adaptive_icon_foreground: "assets/png/app_icon.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/json/
+    - assets/images/
