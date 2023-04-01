@@ -103,7 +103,7 @@ class _InvoiceDetailPageState extends State<InvoiceDetailPage> {
                     customContainer: TextWidget(
                       "Detalhes da Nota Fiscal",
                       textColor: AppColors.backgroundColor,
-                      fontSize: 22.sp,
+                      fontSize: 20.sp,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w500,
                       maxLines: 2,

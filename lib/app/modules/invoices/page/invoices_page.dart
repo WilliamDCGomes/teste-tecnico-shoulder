@@ -68,13 +68,29 @@ class _InvoicesPagesState extends State<InvoicesPages> {
                     informationText: "",
                     showBorder: true,
                     padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.5.h,),
-                    customContainer: TextWidget(
-                      "Entrada de Notas Fiscais",
-                      textColor: AppColors.backgroundColor,
-                      fontSize: 22.sp,
-                      textAlign: TextAlign.center,
-                      fontWeight: FontWeight.w500,
-                      maxLines: 2,
+                    customContainer: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextWidget(
+                          "Entrada de Notas Fiscais",
+                          textColor: AppColors.backgroundColor,
+                          fontSize: 20.sp,
+                          textAlign: TextAlign.center,
+                          fontWeight: FontWeight.w500,
+                          maxLines: 2,
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        TextWidget(
+                          "Shoulder Morumbi",
+                          textColor: AppColors.backgroundColor,
+                          fontSize: 18.sp,
+                          textAlign: TextAlign.center,
+                          fontWeight: FontWeight.w500,
+                          maxLines: 2,
+                        ),
+                      ],
                     ),
                   )
                 ),
