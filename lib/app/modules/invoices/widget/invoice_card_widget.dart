@@ -15,12 +15,17 @@ class InvoiceCardWidget extends StatelessWidget {
   }) : super(key: key);
 
   Color _getColor() {
-    return Color(
-      int.parse(
-        "FF${invoiceInformation.destaqueAtraso.replaceAll('#', '').toUpperCase()}",
-        radix: 16,
-      ),
-    );
+    try{
+      return Color(
+        int.parse(
+          "FF${invoiceInformation.destaqueAtraso.replaceAll('#', '').toUpperCase()}",
+          radix: 16,
+        ),
+      );
+    }
+    catch(_){
+      return AppColors.whiteColor;
+    }
   }
 
   @override
@@ -29,56 +34,57 @@ class InvoiceCardWidget extends StatelessWidget {
       onTap: () => Get.to(() => InvoiceDetailPage(
         invoiceInformation: invoiceInformation,
       )),
-      child: Container(
-        decoration: BoxDecoration(
-          color: invoiceInformation.destaqueAtraso.isEmpty ?
-            AppColors.whiteColor :
-            _getColor(),
+      child: Card(
+        color: invoiceInformation.destaqueAtraso.isEmpty ?
+          AppColors.whiteColor : _getColor(),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(1.h),
-          border: Border.all(
-            width: .5.w,
+          side: BorderSide(
             color: invoiceInformation.destaqueAtraso.isEmpty ?
-            AppColors.defaultColor :
-            _getColor(),
+              AppColors.defaultColor : _getColor(),
+            width: .5.w,
           ),
         ),
-        padding: EdgeInsets.all(1.h),
+        elevation: 3,
         margin: EdgeInsets.only(bottom: 2.h),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: TextWidget(
-                "NF: ${invoiceInformation.notaFiscal}",
-                textColor:invoiceInformation.destaqueAtraso.isEmpty ? AppColors.blackColor : AppColors.whiteColor,
-                fontSize: 18.sp,
-                textAlign: TextAlign.center,
-                fontWeight: FontWeight.w600,
+        child: Padding(
+          padding: EdgeInsets.all(1.h),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: TextWidget(
+                  "NF: ${invoiceInformation.notaFiscal}",
+                  textColor: AppColors.blackColor,
+                  fontSize: 18.sp,
+                  textAlign: TextAlign.center,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            SizedBox(height: 2.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextWidget(
-                  invoiceInformation.data.replaceAll('-', '/'),
-                  textColor:invoiceInformation.destaqueAtraso.isEmpty ? AppColors.blackColor : AppColors.whiteColor,
-                  fontSize: 16.sp,
-                  textAlign: TextAlign.start,
-                  fontWeight: FontWeight.w600,
-                  maxLines: 3,
-                ),
-                TextWidget(
-                  "Atraso: ${invoiceInformation.diasAtraso} dias",
-                  textColor:invoiceInformation.destaqueAtraso.isEmpty ? AppColors.blackColor : AppColors.whiteColor,
-                  fontSize: 16.sp,
-                  textAlign: TextAlign.start,
-                  fontWeight: FontWeight.w600,
-                ),
-              ],
-            ),
-          ],
+              SizedBox(height: 2.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextWidget(
+                    invoiceInformation.data.replaceAll('-', '/'),
+                    textColor: AppColors.blackColor,
+                    fontSize: 16.sp,
+                    textAlign: TextAlign.start,
+                    fontWeight: FontWeight.w600,
+                    maxLines: 3,
+                  ),
+                  TextWidget(
+                    "Atraso: ${invoiceInformation.diasAtraso} dias",
+                    textColor: AppColors.blackColor,
+                    fontSize: 16.sp,
+                    textAlign: TextAlign.start,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -7,5 +7,5 @@ class AppPaths{
   static const String successAnimation = "${jsonPath}success_animation.json";
 
   static const String invoiceIcon = "${imagePath}invoice-icon.png";
-  static const String shoulderIcon = "${imagePath}shoulder-icon.png";
+  static const String shoulderIcon = "${imagePath}shoulder.png";
 }

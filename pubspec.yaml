@@ -29,25 +29,25 @@ dev_dependencies:
   flutter_launcher_icons: ^0.12.0
 
 flutter_native_splash:
-  background_image: assets/png/blue_background.png
-  background_image_dark: assets/png/blue_background.png
-  image: assets/png/app_icon.png
-  image_dark: assets/png/app_icon.png
+  color: "#ffffff"
+  color_dark: "#ffffff"
+  image: assets/images/shoulder-icon.png
+  image_dark: assets/images/shoulder-icon.png
 
   android_12:
-    background_image: assets/png/blue_background.png
-    background_image_dark: assets/png/blue_background.png
-    image: assets/png/app_icon.png
-    image_dark: assets/png/app_icon.png
+    color: "#ffffff"
+    color_dark: "#ffffff"
+    image: assets/images/shoulder-icon.png
+    image_dark: assets/images/shoulder-icon.png
 
   web: false
 
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/png/app_icon.png"
-  adaptive_icon_background: "#1E4767"
-  adaptive_icon_foreground: "assets/png/app_icon.png"
+  image_path: "assets/images/shoulder-icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/shoulder-icon.png"
 
 flutter:
   uses-material-design: true

@@ -82,13 +82,18 @@ class _InvoicesPagesState extends State<InvoicesPages> {
                         SizedBox(
                           height: 1.h,
                         ),
-                        TextWidget(
-                          "Shoulder Morumbi",
-                          textColor: AppColors.backgroundColor,
-                          fontSize: 18.sp,
-                          textAlign: TextAlign.center,
-                          fontWeight: FontWeight.w500,
-                          maxLines: 2,
+                        GetBuilder(
+                          id: "invoices-list",
+                          init: controller,
+                          builder: (_) => TextWidget(
+                            controller.invoiceResponse != null && controller.invoiceResponse!.nomeLoja != "" ?
+                            controller.invoiceResponse!.nomeLoja : "",
+                            textColor: AppColors.backgroundColor,
+                            fontSize: 18.sp,
+                            textAlign: TextAlign.center,
+                            fontWeight: FontWeight.w500,
+                            maxLines: 2,
+                          ),
                         ),
                       ],
                     ),
@@ -96,41 +101,52 @@ class _InvoicesPagesState extends State<InvoicesPages> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 5.w, top: 42.h, right: 5.w, bottom: 2.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextWidget(
-                        "Notas Fiscais",
-                        textColor: AppColors.blackColor,
-                        fontSize: 18.sp,
-                        textAlign: TextAlign.center,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 1.5.h),
-                          child: Obx(
-                            () => ListView.builder(
-                              itemCount: controller.invoiceInformationList.length,
+                  child: GetBuilder(
+                    id: "invoices-list",
+                    init: controller,
+                    builder: (_) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextWidget(
+                          "Notas Fiscais",
+                          textColor: AppColors.blackColor,
+                          fontSize: 18.sp,
+                          textAlign: TextAlign.center,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 1.5.h),
+                            child: controller.invoiceResponse != null ? ListView.builder(
+                              itemCount: controller.invoiceResponse!.notas.length,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return InvoiceCardWidget(
-                                  invoiceInformation: controller.invoiceInformationList[index],
+                                  invoiceInformation: controller.invoiceResponse!.notas[index],
                                 );
                               },
+                            ) : Center(
+                              child: TextWidget(
+                                "Não existem notas fiscais pendentes",
+                                textColor: AppColors.blackColor,
+                                fontSize: 16.sp,
+                                textAlign: TextAlign.center,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      TextWidget(
-                        "Sua loja possui notas pendentes de entrada",
-                        textColor: AppColors.blackColor,
-                        fontSize: 18.sp,
-                        textAlign: TextAlign.center,
-                        fontWeight: FontWeight.w600,
-                        maxLines: 2,
-                      ),
-                    ],
+                        if(controller.invoiceResponse != null)
+                          TextWidget(
+                            "Sua loja possui notas pendentes de entrada",
+                            textColor: AppColors.blackColor,
+                            fontSize: 18.sp,
+                            textAlign: TextAlign.center,
+                            fontWeight: FontWeight.w600,
+                            maxLines: 2,
+                          ),
+                      ],
+                    ),
                   ),
                 ),
                 controller.loadingWithSuccessOrErrorWidget

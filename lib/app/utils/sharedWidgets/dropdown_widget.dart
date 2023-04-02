@@ -65,10 +65,10 @@ class DropdownWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CopyBarCodeWidget(
-                                successText: "Código de barras copiado com sucesso!",
+                                successText: "Nota fiscal copiada com sucesso!",
                                 valueCopy: items[index].codigoBarras,
                                 widgetCustom: RichTextTwoDifferentWidget(
-                                  firstText: "Código de Barras: ",
+                                  firstText: "Nota Fiscal: ",
                                   secondText: items[index].codigoBarras,
                                   secondTextColor: AppColors.blueLinkColor,
                                   secondTextFontWeight: FontWeight.bold,

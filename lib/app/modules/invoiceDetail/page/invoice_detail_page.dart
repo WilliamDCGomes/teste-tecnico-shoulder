@@ -135,53 +135,63 @@ class _InvoiceDetailPageState extends State<InvoiceDetailPage> {
                               width: .5.w,
                             ),
                           ),
-                          child: Padding(
-                            padding: EdgeInsets.all(1.h),
-                            child: Obx(
-                              () => ListView(
+                          child: GetBuilder(
+                            id: "invoice-detail",
+                            init: controller,
+                            builder: (_) => Padding(
+                              padding: EdgeInsets.all(1.h),
+                              child: controller.invoiceDetail != null ? ListView(
                                 shrinkWrap: true,
                                 children: [
                                   Center(
                                     child: RichTextTwoDifferentWidget(
-                                      firstText: controller.invoiceDetail.value.nomeLoja,
+                                      firstText: controller.invoiceDetail!.nomeLoja,
                                     ),
                                   ),
                                   SizedBox(height: 2.h),
                                   RichTextTwoDifferentWidget(
                                     firstText: "Nota Fiscal: ",
-                                    secondText: controller.invoiceDetail.value.notaFiscal,
+                                    secondText: controller.invoiceDetail!.notaFiscal,
                                   ),
                                   SizedBox(height: 2.h),
                                   RichTextTwoDifferentWidget(
                                     firstText: "Origem: ",
-                                    secondText: "${controller.invoiceDetail.value.nomelojaOrigem} - ${controller.invoiceDetail.value.numLojaOrigem}",
+                                    secondText: "${controller.invoiceDetail!.nomelojaOrigem} - ${controller.invoiceDetail!.numLojaOrigem}",
                                   ),
                                   SizedBox(height: 2.h),
                                   RichTextTwoDifferentWidget(
                                     firstText: "Destino: ",
-                                    secondText: "${controller.invoiceDetail.value.nomeLoja} - ${controller.invoiceDetail.value.numLoja}",
+                                    secondText: "${controller.invoiceDetail!.nomeLoja} - ${controller.invoiceDetail!.numLoja}",
                                   ),
                                   SizedBox(height: 2.h),
                                   RichTextTwoDifferentWidget(
                                     firstText: "Emissão: ",
-                                    secondText: controller.invoiceDetail.value.data.replaceAll('-', '/'),
+                                    secondText: controller.invoiceDetail!.data.replaceAll('-', '/'),
                                   ),
                                   SizedBox(height: 2.h),
                                   RichTextTwoDifferentWidget(
                                     firstText: "Peças: ",
-                                    secondText: controller.invoiceDetail.value.getQuantityItems,
+                                    secondText: controller.invoiceDetail!.getQuantityItems,
                                   ),
                                   SizedBox(height: 2.h),
                                   RichTextTwoDifferentWidget(
                                     firstText: "Quantidade de Itens na Lista: ",
-                                    secondText: controller.invoiceDetail.value.itens.length.toString(),
+                                    secondText: controller.invoiceDetail!.itens.length.toString(),
                                   ),
                                   SizedBox(height: 2.h),
                                   DropdownWidget(
                                     title: "Itens",
-                                    items: controller.invoiceDetail.value.itens,
+                                    items: controller.invoiceDetail!.itens,
                                   ),
                                 ],
+                              ) : Center(
+                                child: TextWidget(
+                                  "Sem informações",
+                                  textColor: AppColors.blackColor,
+                                  fontSize: 16.sp,
+                                  textAlign: TextAlign.center,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
