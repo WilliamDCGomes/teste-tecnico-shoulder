@@ -29,14 +29,14 @@ dev_dependencies:
   flutter_launcher_icons: ^0.12.0
 
 flutter_native_splash:
-  color: "#ffffff"
-  color_dark: "#ffffff"
+  color: "#000000"
+  color_dark: "#000000"
   image: assets/images/shoulder-icon.png
   image_dark: assets/images/shoulder-icon.png
 
   android_12:
-    color: "#ffffff"
-    color_dark: "#ffffff"
+    color: "#000000"
+    color_dark: "#000000"
     image: assets/images/shoulder-icon.png
     image_dark: assets/images/shoulder-icon.png
 
@@ -46,7 +46,7 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/images/shoulder-icon.png"
-  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_background: "#000000"
   adaptive_icon_foreground: "assets/images/shoulder-icon.png"
 
 flutter:
